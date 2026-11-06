@@ -18,7 +18,7 @@ foto = Label(window, image=photo)
 foto.place(x=960, y=0)
 
 
-# Функции плейсхолдеров для авторизации
+
 def on_focus_in(_):
     if log_entry.get() == placeholder_text:
         log_entry.delete(0, END)
@@ -51,7 +51,7 @@ def load_users():
     return []
 
 
-# Возврат на экран авторизации (Кнопка «Выйти»)
+
 def logout(current_win):
     current_win.destroy()
     global window
@@ -61,7 +61,7 @@ def logout(current_win):
     window.iconbitmap("favicon.ico")
     window.title('Mystat')
 
-    # Повторная отрисовка главного экрана входа
+
     global foto, log_entry, password_entry
     image = Image.open('img.png')
     image = image.resize((960, 1080))
@@ -93,7 +93,7 @@ def logout(current_win):
     window.mainloop()
 
 
-# Показать подробную информацию о студенте (оценки и средний балл) при клике на имя
+
 def show_student_details(student):
     details_win = Toplevel()
     details_win.geometry("400x300")
@@ -116,7 +116,7 @@ def show_student_details(student):
     Button(details_win, text="Закрыть", command=details_win.destroy, font=("Arial", 12)).pack(pady=20)
 
 
-# Функция удаления студента
+
 def delete_student(login, teacher_win):
     if messagebox.askyesno("Подтверждение", f"Вы действительно хотите удалить студента с логином '{login}'?"):
         users_list = load_users()
@@ -130,7 +130,7 @@ def delete_student(login, teacher_win):
         open_teacher_window()
 
 
-# Функция добавления нового студента
+
 def add_new_student(name_entry, login_entry, pass_entry, teacher_win):
     name = name_entry.get().strip()
     login = login_entry.get().strip()
@@ -167,7 +167,7 @@ def add_new_student(name_entry, login_entry, pass_entry, teacher_win):
     open_teacher_window()
 
 
-# Сохранение оценок
+
 def save_grades(entries_dict, teacher_win):
     users_list = load_users()
 
@@ -198,7 +198,7 @@ def save_grades(entries_dict, teacher_win):
     open_teacher_window()
 
 
-# Окно преподавателя
+
 def open_teacher_window():
     try:
         window.destroy()
@@ -279,7 +279,7 @@ def open_teacher_window():
     teacher_win.mainloop()
 
 
-# --- КАБИНЕТ СТУДЕНТА (ОБНОВЛЕННЫЙ) ---
+
 def open_student_window(current_student):
     try:
         window.destroy()
@@ -291,14 +291,14 @@ def open_student_window(current_student):
     student_win.title("Кабинет Студента")
     student_win.resizable(False, False)
 
-    # Имя текущего студента
+
     name = current_student.get("name", "Студент")
     Label(student_win, text=f"Добро пожаловать, {name}!", font=("Arial", 22, "bold")).pack(pady=30)
 
-    # Оценки студента
+
     grades = current_student.get("grades", [])
 
-    # Безопасный расчет среднего балла (проверка на деление на ноль)
+
     if len(grades) > 0:
         avg_grade = round(sum(grades) / len(grades), 1)
         grades_text = ", ".join(map(str, grades))
@@ -309,7 +309,7 @@ def open_student_window(current_student):
     Label(student_win, text=f"Ваши оценки: {grades_text}", font=("Arial", 16)).pack(pady=20)
     Label(student_win, text=f"Средний балл: {avg_grade}", font=("Arial", 18, "bold"), fg="purple").pack(pady=20)
 
-    # Кнопка «Выйти»
+
     Button(
         student_win,
         text="Выйти",
@@ -343,7 +343,6 @@ def check_login():
         messagebox.showerror("Ошибка", "Неверный логин или пароль!")
 
 
-# Первоначальный запуск окна авторизации
 mystat = Label(window, text='MyStat', fg='purple', font=('Arial', 30, 'bold'))
 mystat.place(x=5, y=5)
 
