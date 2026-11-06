@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Sama",
+        "login": "sama",
+        "password": "teacher2017",
+        "role": "teacher"
+    },
+    {
+        "name": "Alina",
+        "login": "alina",
+        "password": "123alina",
+        "role": "student",
+        "grades": [
+            10,
+            12,
+            9,
+            10,
+            10,
+            10,
+            1,
+            1,
+            10,
+            10
+        ]
+    },
+    {
+        "name": "Omar",
+        "login": "omar",
+        "password": "123omar",
+        "role": "student",
+        "grades": [
+            8,
+            10,
+            10,
+            1
+        ]
+    },
+    {
+        "name": "sad",
+        "login": "sad",
+        "password": "sad",
+        "role": "student",
+        "grades": [
+            10
+        ]
+    }
+]
